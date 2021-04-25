@@ -8,15 +8,26 @@ namespace CSharp_Shell
 
     public static class Program 
     {
-        public static void Main(string[] args) 
+        public static void Main() 
         {
-           Console.WriteLine("Employee time keeping system");
+           Console.WriteLine("Welcome to Employee Time Keeping System");
            
-           Console.Write("the employee enters less than or equal 12:59pm");
+           Console.Write("Employee Time Keeping System");
            Console.ReadLine();
-           Console.Write("the employee will enter greater than or equal 1:00pm ");
+           Console.Write("Name: ");
            Console.ReadLine();
-           
+           Console.Write("Date: ");
+           Console.ReadLine();
+           Console.Write("Time In");
+           Console.ReadLine();
+           Console.Write("Time out");
+           Console.ReadLine();
+          
+          
+            Console.WriteLine();
+            Console.WriteLine("Please enter Y if you are time in or N if you are time out.");
+          
+        }
+        
     }
-}
 }
