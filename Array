@@ -1,0 +1,33 @@
+Private Sub cmbMonth_Click()
+Dim intDate As Integer
+ 
+intDate = cmbMonth.ListIndex + 1
+
+InitialDate = DateSerial(Year(Date), intDate, 1)
+EndDate = DateSerial(Year(Date), intDate, ReturnLastDayDate(intDate))
+ 
+
+Call ShowOverTimeHrs
+ 
+End Sub
+ 
+Private Sub ShowOverTimeHrs()
+Dim OverTime As String
+Dim OverTimeHrscnt As Variant
+Dim ls As ListItem
+ 
+OverTime = "select * from tblTime where EMPID='" & txtEmpNo & "' and WORKING_TIME =FALSE and DATE between #" & InitialDate & "# and #" & EndDate & "#"
+Set reghours = myConn.Execute(OverTime)
+
+lv(1).ListItems.Clear
+Do Until reghours.EOF
+Set ls = lv(1).ListItems.Add(, , reghours(1))
+ls.SubItems(1) = reghours(2) & ""
+ls.SubItems(2) = reghours(3) & ""
+ls.SubItems(3) = reghours(4) & ""
+ 
+OverTimeHrscnt = OverTimeHrscnt + Val(reghours(4)) - 8
+reghours.MoveNext
+Loop
+lblTotalOT.Caption = OverTimeHrscnt
+End Sub
